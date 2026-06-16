@@ -52,6 +52,10 @@ function renderActions($row) {
         $dugme .= " | <a href='otkazi.php?id={$row['id']}'>✖ Otkaži</a>";
     }
 
+	if ($row['status'] != "obrisano") {
+    $dugme .= " | <a href='obrisi.php?id={$row['id']}' onclick=\"return confirm('Premestiti obavezu u korpu?')\">🗑 Obriši</a>";
+}
+
     return $dugme;
 }
 

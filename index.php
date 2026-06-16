@@ -15,6 +15,7 @@ $today = date('Y-m-d');
 ========================= */
 $sqlToday = "SELECT * FROM tasks 
 WHERE datum = '$today'
+AND status != 'obrisano'
 ORDER BY vreme ASC";
 
 $resultToday = $conn->query($sqlToday);
@@ -23,10 +24,13 @@ $resultToday = $conn->query($sqlToday);
    GLAVNI UPIT
 ========================= */
 if ($kategorija == "SVE") {
-    $sql = "SELECT * FROM tasks ORDER BY datum, vreme";
+    $sql = "SELECT * FROM tasks 
+            WHERE status != 'obrisano'
+            ORDER BY datum, vreme";
 } else {
     $sql = "SELECT * FROM tasks 
             WHERE kategorija = '$kategorija'
+            AND status != 'obrisano'
             ORDER BY datum, vreme";
 }
 
